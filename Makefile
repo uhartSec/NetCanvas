@@ -7,7 +7,7 @@ all: netCanvas
 netCanvas: main.cpp
 	$(CC) $(CFLAGS) -g -o netCanvas main.cpp
 
-valgrind: maze
+valgrind: netCanvas
 	valgrind --tool=memcheck --leak-check=yes ./netCanvas
 
 clean:
