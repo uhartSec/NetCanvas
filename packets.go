@@ -74,23 +74,11 @@ func getDevices(){
     }
 }
 
-
-
-/**
-var (
-    device       string = "wlp3s0"
-    snapshot_len int32  = 1024
-    promiscuous  bool   = false
-    err          error
-    timeout      time.Duration = 30 * time.Second
-    handle       *pcap.Handle
-)
-
-*/
+func startCapture(
 
 func main() {
     // Open device
-	deviceInterface := flag.String("i", "all", "View device interfaces")	
+	viewDeviceInterface := flag.String("i", "all", "View device interfaces")
 	//setDeviceInterface := flag.String("d", "wlp3d0", "Listen on interface")
 	flag.Parse()
 
@@ -102,7 +90,6 @@ func main() {
 	switch os.Args[2] {
 		case "all":
 			getDevices()
-
 		default:
 			flag.PrintDefaults()
 	}
