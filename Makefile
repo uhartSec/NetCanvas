@@ -2,12 +2,14 @@ SHELL := /bin/bash
 CC=g++
 CFLAGS=-pedantic -ansi -Wall -lpcap
 
+SRC_DIR := ./src
+
 all: netCanvas
 	
-netCanvas: main.cpp
-	$(CC) $(CFLAGS) -g -o netCanvas main.cpp address.cpp interface.cpp
+netCanvas: $(SRC_DIR)/*.cpp $(SRC_DIR)/*.h
+	$(CC) $(CFLAGS) -g -o netCanvas $(SRC_DIR)/*.cpp
 
-valgrind: netCanvas
+valgrind: -netCanvas
 	valgrind --tool=memcheck --leak-check=yes ./netCanvas
 
 clean:
