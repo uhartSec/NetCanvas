@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
 	if(inum < 1 || inum > i)
 	{
 		printf("Selection out of range");
+		pcap_freealldevs(alldevs);
 		return 1;
 	}
 
@@ -49,6 +50,7 @@ int main(int argc, char *argv[])
 	if(handle == NULL)
 	{
 		fprintf(stderr, "Couldn't open device %s: %s\n", d->name, errbuf);
+		pcap_freealldevs(alldevs);
 		return 2;
 	}
 	pcap_freealldevs(alldevs);
