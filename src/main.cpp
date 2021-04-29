@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "netCanvas.h"
+#include "netcanvas.h"
 
 
 
@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
 {
 	pcap_if_t *alldevs;
 	pcap_if_t *d;
+	pcap_t *handle;
 	int i=0;
 	int j=0;
 	int inum;
@@ -42,7 +43,16 @@ int main(int argc, char *argv[])
 
   
 	interface_print(d);
-  pcap_freealldevs(alldevs);
+    
 
+	handle = pcap_open_live(d->name, BUFSIZ, 1, 100, errbuf);
+	if(handle == NULL)
+	{
+		fprintf(stderr, "Couldn't open device %s: %s\n", d->name, errbuf);
+		return 2;
+	}
+	pcap_freealldevs(alldevs);
+
+	pcap_loop(handle,0,packet_handler,NULL);
 	return(0);
 }

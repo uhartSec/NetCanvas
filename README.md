@@ -1,7 +1,7 @@
 # Tasks
 1. Explore makefile use
-2. Get live capturing working - capture.c
-3. Create multiple filter options - filter.c
+2. Get live capturing working - capture.cpp
+3. Create multiple filter options - filter.cpp
 4. Explore more functionality
 
 

@@ -4,7 +4,7 @@
 *
 */
 
-#include "netCanvas.h"
+#include "netcanvas.h"
 
 
 void interface_print(pcap_if_t *d)
