@@ -28,6 +28,10 @@ void interface_print(pcap_if_t *d)
   
     switch(a->addr->sa_family)
     {
+      case AF_PACKET:
+        printf("\tAddress Family Name: AF_PACKET\n");
+        break;
+
       case AF_INET:
         printf("\tAddress Family Name: AF_INET\n");
         if (a->addr)

@@ -46,7 +46,11 @@ int main(int argc, char *argv[])
 	interface_print(d);
     
 
-	handle = pcap_open_live(d->name, BUFSIZ, 1, 100, errbuf);
+	handle = pcap_open_live(d->name, 
+							65536,
+							PCAP_OPENFLAG_PROMISCUOUS, 
+							1000,
+							errbuf);
 	if(handle == NULL)
 	{
 		fprintf(stderr, "Couldn't open device %s: %s\n", d->name, errbuf);
